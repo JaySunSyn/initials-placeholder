@@ -8,7 +8,11 @@
   "keywords": [
     "web-component",
     "polymer",
-    "seed"
+    "seed",
+    "gravatar",
+    "placeholder",
+    "avatar",
+    "initials"
   ],
   "main": "initials-placeholder.html",
   "license": "http://polymer.github.io/LICENSE.txt",
