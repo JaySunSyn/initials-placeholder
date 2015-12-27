@@ -2,7 +2,7 @@
   "name": "initials-placeholder",
   "version": "1.0.3",
   "authors": [
-    "Anonymous <anonymous@example.com>"
+    "Jalal Fathi <jfathi.mail@gmail.com> (http://jalal.io)"
   ],
   "description": "An element providing a solution to no problem in particular.",
   "keywords": [
@@ -12,7 +12,7 @@
   ],
   "main": "initials-placeholder.html",
   "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/<USERNAME>/seed-element/",
+  "homepage": "https://github.com/JaySunSyn/initials-placeholder.git",
   "ignore": [
     "/.*",
     "/test/"
