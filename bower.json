@@ -4,7 +4,7 @@
   "authors": [
     "Jalal Fathi <jfathi.mail@gmail.com> (http://jalal.io)"
   ],
-  "description": "An element providing a solution to no problem in particular.",
+  "description": "An avatar placeholder with the initials of a name, sourounded by a colored circle.",
   "keywords": [
     "web-component",
     "web-components",
