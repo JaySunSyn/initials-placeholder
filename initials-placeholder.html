@@ -169,7 +169,7 @@ Example:
     },
 
     generatePlaceholder: function () {
-      var name = this.firstName ? this.firstName : '' + ' ' + this.lastName ? this.lastName : '';
+      var name = (this.firstName ? this.firstName : '') + ' ' + (this.lastName ? this.lastName : '');
       var initials = this._getInitials( name );
       var hash = Math.abs( this._getHashCode( name ) ) % this.numColors;
 
