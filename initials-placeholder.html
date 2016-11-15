@@ -28,7 +28,7 @@ Example:
       :host {
         color: #4f4f4f;
         font-family: "Helvetica Neue", "Segoe UI", "Roboto", sans-serif;
-        padding: 6px;
+        display: inline-block;
         text-align: center;
       }
 
@@ -122,13 +122,13 @@ Example:
 
       firstName: {
         type: String,
-        value: 'Elfy',
+        value: '',
         observer: 'generatePlaceholder'
       },
 
       lastName: {
         type: String,
-        value: 'Cares',
+        value: '',
         observer: 'generatePlaceholder'
       }
 
@@ -143,11 +143,10 @@ Example:
     },
 
     _getInitials: function (glue) {
-      if (typeof glue == "undefined") {
-        var glue = true;
-      }
+      if (!glue) return '';
 
       var initials = glue.replace(/[^a-zA-Z- ]/g, "").match(/\b\w/g);
+      if (!initials) return '';
 
       if (glue) {
         return initials.join('').substring(0, 2);
@@ -157,6 +156,7 @@ Example:
     },
 
     _getHashCode: function (str) {
+      if (!str) return ''
       var hash = 0,
             i, chr, len;
       if (str.length == 0) return hash;
@@ -169,7 +169,7 @@ Example:
     },
 
     generatePlaceholder: function () {
-      var name = this.firstName + ' ' + this.lastName;
+      var name = this.firstName ? this.firstName : '' + ' ' + this.lastName ? this.lastName : '';
       var initials = this._getInitials( name );
       var hash = Math.abs( this._getHashCode( name ) ) % this.numColors;
 
