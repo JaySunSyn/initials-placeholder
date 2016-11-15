@@ -27,12 +27,15 @@ Example:
     <style>
       :host {
         color: #4f4f4f;
-        font-size: 18px;
         font-family: "Helvetica Neue", "Segoe UI", "Roboto", sans-serif;
         padding: 6px;
         text-align: center;
       }
-  
+
+      [hidden] {
+        display: none !important;
+      }
+
       /* Relevant Code */
       .person {
         display: table;
@@ -50,6 +53,9 @@ Example:
         border: 2px solid;
         line-height: 46px;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .person-avatarPlaceholder.color-0 {
         color: #d9566f;
@@ -63,28 +69,28 @@ Example:
         color: #7fbb15;
         background: rgba(127, 187, 21, 0.15);
       }
+      .person-avatarPlaceholder.color-3 {
+        color: #2c5025;
+        background: rgba(24, 202, 76, 0.15);
+      }
 
       .person-name {
         padding-left: 12px;
       }
-
-      @media (max-width: 767px) {
-        :host {
-          font-size: 15px;
-        }
-      }
-    </style>    
+    </style>
     <div class="person">
       <div>
-        <div id="avatarPlaceholder" class="person-avatarPlaceholder color-1 js-avatarPlaceholder"><span id="initials" class="js-initials">JP</span></div>
+        <div id="avatarPlaceholder" class="person-avatarPlaceholder color-1 js-avatarPlaceholder">
+          <span id="initials" class="js-initials">JP</span>
+        </div>
       </div>
-      <template is="dom-if" if="{{showName}}">
-        <div class="person-name js-name">
+      <div hidden$="[[!showName]]">
+        <div id="nameDiv" class="person-name js-name">
           <span>[[firstName]]</span>
           <span>[[lastName]]</span>
         </div>
-      </template>
-      
+      </div>
+
     </div>
   </template>
 
@@ -98,14 +104,20 @@ Example:
 
     properties: {
 
+      size: {
+        type: Number,
+        value: 48,
+        observer: '_sizeChanged'
+      },
+
       numColors: {
         type: Number,
-        value: 3
+        value: 4
       },
 
       showName: {
         type: Boolean,
-        value: false
+        value: false,
       },
 
       firstName: {
@@ -120,6 +132,14 @@ Example:
         observer: 'generatePlaceholder'
       }
 
+    },
+
+    _sizeChanged(size) {
+      if (!size) return;
+      this.$.avatarPlaceholder.style.height = size + 'px';
+      this.$.avatarPlaceholder.style.width = size + 'px';
+      this.$.avatarPlaceholder.style.fontSize = size/2 + 'px';
+      this.$.nameDiv.style.fontSize = size/2.5 + 'px';
     },
 
     _getInitials: function (glue) {
@@ -154,13 +174,13 @@ Example:
       var hash = Math.abs( this._getHashCode( name ) ) % this.numColors;
 
       this.$.initials.textContent = initials;
-      this.$.avatarPlaceholder.classList.remove('color-0');
-      this.$.avatarPlaceholder.classList.remove('color-1');
-      this.$.avatarPlaceholder.classList.remove('color-2');
+
+      this.numColors = this.numColors < 5 ? this.numColors : 4
+      for (var i = 0; i < this.numColors.length; i++) {
+        this.$.avatarPlaceholder.classList.add('color-' + i)
+      }
       this.$.avatarPlaceholder.classList.add('color-' + hash);
     }
-
-
   });
 
 </script>
