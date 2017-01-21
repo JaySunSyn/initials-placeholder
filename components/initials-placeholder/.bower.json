@@ -1,0 +1,40 @@
+{
+  "name": "initials-placeholder",
+  "authors": [
+    "Jalal Fathi <jfathi.mail@gmail.com> (http://jalal.io)"
+  ],
+  "description": "An avatar placeholder with the initials of a name, sourounded by a colored circle.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "gravatar",
+    "placeholder",
+    "avatar",
+    "initials"
+  ],
+  "main": "initials-placeholder.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/JaySunSyn/initials-placeholder.git",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.1.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  },
+  "_release": "72c35ee3bc",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "72c35ee3bca6f9d06a00d264f97be1765802c764"
+  },
+  "_source": "https://github.com/JaySunSyn/initials-placeholder.git",
+  "_target": "master",
+  "_originalSource": "https://github.com/JaySunSyn/initials-placeholder.git",
+  "_direct": true
+}
